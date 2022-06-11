@@ -1,4 +1,4 @@
-// SWAP LANGUAGE --------------------------------------------------------
+// SWAP LANGUAGES --------------------------------------------------------
 //     to access languages, __Language.innerHTML (from or to)
 function swapLanguages() {
     var fromLanguage = document.getElementById("fromLanguage");
@@ -30,6 +30,7 @@ function copyOutput() {
 
 
 // TEXT TO SPEECH -------------------------------------------------------
+//      uses Web Speech API, specifically the speechSynthesis interface
 var text = document.getElementById("outputText");
 var language = document.getElementById("toLanguage");
 
@@ -55,6 +56,7 @@ function textToSpeech() {
 
 
 // SPEECH TO TEXT -------------------------------------------------------
+//      uses Web Speech API, specifically the speechRecognition interface
 var textarea = document.getElementById('inputText');
 var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
@@ -111,7 +113,7 @@ function checkForTranslation() {
 
     fromLanguage = fromLanguage.toLowerCase();
 
-    
+    // API INPUT HERE 
     if (fromLanguage == "english") {
         fetch('https://hf.space/embed/SalamaThanks/SalamaThanksV3/+/api/predict/', { method: "POST", body: JSON.stringify({"data":[ "English-to-Filipino",  input]})
             , headers: { "Content-Type": "application/json" } })
